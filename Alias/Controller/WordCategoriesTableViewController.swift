@@ -35,5 +35,6 @@ class WordCategoriesTableViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         let wordsPack = aliasWordsPack[indexPath.row]
         
+        
     }
 }
