@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class AliasGameViewController: UIViewController {
     
     @IBOutlet var timerLabel: UILabel!
@@ -14,12 +13,10 @@ class AliasGameViewController: UIViewController {
     @IBOutlet var wordsLabel: UILabel!
     @IBOutlet var correctButton: UIButton!
     
-    
     var aliasGameManager: AliasGameManager!
     private var timer = Timer()
     private var totalTime = 60
     private var secondsPassed = 0
-    
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,17 +38,18 @@ class AliasGameViewController: UIViewController {
                                                         attributes: [.font: font,
                                                                      .foregroundColor: UIColor.green])
         correctButton.setAttributedTitle(attributedText, for: .normal)
+        SoundManager.shared.playSound(for: .correct)
         aliasGameManager.scoreUp()
         updateUI()
     }
     
     @IBAction func skipButtonPressed() {
+        SoundManager.shared.playSound(for: .skip)
         aliasGameManager.scoreDown()
         updateUI()
     }
     
     @IBAction func resetButtonPressed() {
-       
     }
     
     private func updateUI() {
